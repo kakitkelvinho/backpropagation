@@ -1,5 +1,10 @@
 %back beam
 close all;
+
+% add path to find function scripts
+addpath('./Functions');
+
+
 lambda = 1e-3;
 k0 = 2*pi/lambda;
 L = 50e-3;
