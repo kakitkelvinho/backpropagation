@@ -1,4 +1,4 @@
-%back beam with sinc function
+%back beam with airy function
 close all;
 
 
@@ -35,23 +35,27 @@ offset = z*tand(angle_offset);
 
 r = sqrt((X+offset).^2 + Y.^2);
 
+% airy function
+u1 = besselj(1,k0*r);
+u1(X.^2+Y.^2 > (18e-3)^2) = 0;
 
-u1 = sin(k0.*r)./(k0.*r);
-u1(isnan(u1)) = 1;
 u0 = backpropTF(u1, L, lambda, z);
 u0(X.^2+Y.^2 >(6e-3)^2) = 0;
 reu1 = propTF(u0, L, lambda, z);
 
 figure;
+mesh(x,y,u1);
+
+figure;
 subplot(131);
-imagesc(x, y, abs(u1));
+imagesc(x, y, abs(u1)/max(max(u1)));
 colorbar;
 axis square;
 colormap jet;
 title("Defined Field");
 
 subplot(132);
-imagesc(x, y, angle(u0));
+imagesc(x, y, abs(u0));
 colorbar;
 axis square;
 colormap jet;
@@ -64,13 +68,13 @@ axis square;
 colormap jet;
 title("Focal Plane after repropagation");
 
-figure;
-imagesc(x/1e-3, y/1e-3, abs(reu1)/max(max(abs(reu1))));
-colorbar;
-xlabel("mm");
-ylabel("mm");
-xlim([-17 -7]);
-ylim([-5 5]);
-colormap jet;
-axis square;
-title("Focal Plane after repropagation, zoomed");
+% figure;
+% imagesc(x/1e-3, y/1e-3, abs(reu1)/max(max(abs(reu1))));
+% colorbar;
+% xlabel("mm");
+% ylabel("mm");
+% xlim([-17 -7]);
+% ylim([-5 5]);
+% colormap jet;
+% axis square;
+% title("Focal Plane after repropagation, zoomed");

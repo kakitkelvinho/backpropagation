@@ -25,13 +25,23 @@ u1 = propTF(u0, L, lambda, z);
 
 figure;
 subplot(121);
-imagesc(x, y, angle(u0));
+imagesc(x./1e-3, y./1e-3, angle(u0));
+% xlim([-6.5 6.5]);
+% ylim([-6.5 6.5]);
+title("Antenna Plane");
+xlabel("mm");
+ylabel("mm");
 colorbar;
 axis square;
 colormap jet;
 
 subplot(122);
-imagesc(x, y, abs(u1)/max(max(abs(u1))));
+imagesc(x./1e-3, y./1e-3, abs(u1)/max(max(abs(u1))));
+% xlim([-6.5 6.5]);
+% ylim([-18.5 -5.5]);
+title("Focal Plane");
+xlabel("mm");
+ylabel("mm");
 colorbar;
 colormap jet;
 axis square;
