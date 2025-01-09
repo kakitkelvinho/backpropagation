@@ -4,6 +4,8 @@
 
 This repository contains MATLAB scripts (and live scripts) which performs a simulation for beam forming in the Terahertz spectrum. Essentially, the method employed here is the Angular Spectrum Method (ASM), which propagates a wave by taking the Fouerier Transform of it and propagating the components of each individual frequency.
 
+The work of which has been published in the following paper: [Spot Focusing Coma Correction by Linearly Polarized Dual-Transmitarray Antenna in the Terahertz Region](https://ieeexplore.ieee.org/document/10189182).
+
 ## Overview
 
 ### Usage
